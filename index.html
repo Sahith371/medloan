@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediLoan - Your Medical Financial Partner</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0056b3;
+            --secondary-color: #17a2b8;
+            --accent-color: #ffc107;
+            --text-color: #333;
+            --bg-color: #f8f9fa;
+            --success-color: #28a745;
+            --error-color: #dc3545;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: #ffffff;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header #branding h1 {
+            font-size: 1.8rem;
+            margin: 0;
+        }
+
+        header nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        header nav ul li {
+            margin-left: 20px;
+        }
+
+        header a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        header a:hover {
+            color: var(--accent-color);
+        }
+
+        .page {
+            display: none;
+            padding: 80px 0;
+            min-height: calc(100vh - 70px);
+        }
+
+    
+html, body {
+    margin: 0; 
+    padding: 0; 
+    width: 100%; 
+    height: 100%;
+}
+
+#home {
+    position: absolute;
+    left: 0; 
+    right: 0;
+    top: 0; 
+    bottom: 0; 
+    background-image: linear-gradient(rgba(105, 95, 95, .7), rgba(105, 95, 95, .7)), url('https://loantap.in/wp-content/uploads/Medical-loan-1.webp');
+    color: white;
+    background-color: rgba(255, 255, 255, 0.1);
+    background-size: cover; /* Make background image cover */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Prevent repeating the image */
+    text-align: center; /* Center text */
+    padding: 150px 0; /* Top and bottom padding */
+}
+
+
+        #home .overlay {
+            padding: 50px;
+            border-radius: 10px;
+            margin-bottom: 50px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        #home h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        #home p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+
+        .button {
+            display: inline-block;
+            background: var(--accent-color);
+            color: #333;
+            padding: 10px 30px;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .button:hover {
+            background: #e0a800;
+            transform: translateY(-3px);
+        }
+
+        .feature-box {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            transition: transform 0.3s;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-box h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 50px;
+        }
+
+        .features .feature-box {
+            flex-basis: calc(50% - 15px);
+        }
+
+        form {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        form input, form select, form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        form input:focus, form select:focus, form textarea:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+
+        .error {
+            color: var(--error-color);
+            font-size: 0.9rem;
+            margin-top: -15px;
+            margin-bottom: 10px;
+        }
+
+        #successMessage {
+            display: none;
+            background: var(--success-color);
+            color: white;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 5px;
+            text-align: center;
+            animation: slideDown 0.5s ease-out;
+        }
+
+        .payment-icons {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+
+        .payment-icon {
+            font-size: 2rem;
+            cursor: pointer;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .payment-icon:hover {
+            color: var(--primary-color);
+            transform: scale(1.1);
+        }
+
+        /* New styles for About Us page */
+        #aboutUs {
+            background: linear-gradient(135deg, #f6f9fc, #e9f2f9);
+            padding: 80px 0;
+        }
+
+        #aboutUs h2 {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 40px;
+            font-size: 2.5rem;
+        }
+
+        .team-member {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+        }
+
+        .team-member img {
+            width: 145px;
+            height: 185px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+
+        .team-member h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .team-member p {
+            color: var(--text-color);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* Enhanced styles for better visual appeal */
+        .page h2 {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 40px;
+            font-size: 2.5rem;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+
+         .cta-button {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: pulse 2s infinite;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Responsive design enhancements */
+        @media (max-width: 768px) {
+            header .container {
+                flex-direction: column;
+            }
+
+            header nav ul {
+                margin-top: 20px;
+            }
+
+            header nav ul li {
+                margin: 0 10px;
+            }
+
+            .features .feature-box {
+                flex-basis: 100%;
+            }
+
+            #home h2 {
+                font-size: 2.5rem;
+            }
+
+            .cta-button {
+                padding: 12px 30px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div id="branding">
+                <h1>MediLoan</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#" onclick="showPage('home')">Home</a></li>
+                    <li><a href="#" onclick="showPage('howItWorks')">How It Works</a></li>
+                    <li><a href="#" onclick="showPage('invest')">Invest</a></li>
+                    <li><a href="#" onclick="showPage('borrow')">Borrow</a></li>
+                    <li><a href="#" onclick="showPage('aboutUs')">About Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div id="home" class="page">
+
+            <div class="overlay">
+                <h2 style="color:yellow;">Welcome to MediLoan</h2>
+                <p style="color:white;">Your trusted partner in medical financial solutions. We bridge the gap between healthcare needs and financial constraints.</p>
+                <a href="#" class="cta-button" onclick="showPage('howItWorks')">Learn More</a>
+            </div>
+            
+        </div>
+
+        <div id="howItWorks" class="page">
+            <h2>How It Works</h2>
+            <div class="feature-box">
+                <h3>For Investors</h3>
+                <ol>
+                    <li>Create an account and complete verification</li>
+                    <li>Choose your investment amount and term</li>
+                    <li>Transfer funds using your preferred payment method</li>
+                    <li>Track your investments and returns through your dashboard</li>
+                    <li>Receive regular repayments with interest</li>
+                </ol>
+            </div>
+            <div class="feature-box">
+                <h3>For Borrowers</h3>
+                <ol>
+                    <li>Fill out the loan application form</li>
+                    <li>Upload required documents (Aadhar Card, PAN Card, Medical Certificate)</li>
+                    <li>Our team reviews your application</li>
+                    <li>Upon approval, receive funds directly in your account</li>
+                    <li>Repay the loan in easy installments</li>
+                </ol>
+            </div>
+        </div>
+
+        <div id="invest" class="page">
+            <h2>Invest in Medical Loans</h2>
+            <p>Make a difference while earning competitive returns. Your investment helps individuals access crucial medical care.</p>
+            <div class="feature-box">
+                <h3>Investment Benefits</h3>
+                <ul>
+                    <li>Earn up to 8% annual interest on your investment</li>
+                    <li>Choose from flexible investment terms</li>
+                    <li>Start with as little as ₹10,000</li>
+                    <li>Diversify your portfolio with social impact investments</li>
+                </ul>
+            </div>
+            <button class="cta-button" onclick="showInvestForm()">Invest Now</button>
+            <form id="investForm" style="display:none;">
+                <label for="investName">Name:</label>
+                <input type="text" id="investName" required>
+                <div class="error" id="investNameError"></div>
+               
+                <label for="investEmail">Email:</label>
+                <input type="email" id="investEmail" required>
+                <div class="error" id="investEmailError"></div>
+               
+                <label for="investPhone">Phone Number:</label>
+                <input type="tel" id="investPhone" required>
+                <div class="error" id="investPhoneError"></div>
+               
+                <label for="investAmount">Investment Amount (₹):</label>
+                <input type="number" id="investAmount" min="10000" required>
+                <div class="error" id="investAmountError"></div>
+               
+                <label>Payment Method:</label>
+                <p>Payment Number : 9867469346</p>
+                <div class="payment-icons">
+                    <i class="fab fa-google-pay payment-icon" onclick="selectPaymentMethod('googlepay')"></i>
+                    <i class="fab fa-cc-paypal payment-icon" onclick="selectPaymentMethod('phonepe')"></i>
+                    <i class="fas fa-money-check-alt payment-icon" onclick="selectPaymentMethod('paytm')"></i>
+                </div>
+                <input type="hidden" id="paymentMethod" required>
+                <div class="error" id="paymentMethodError"></div>
+               
+                <label for="paymentScreenshot">Upload Payment Screenshot:</label>
+                <input type="file" id="paymentScreenshot" accept="image/*" required>
+                <div class="error" id="paymentScreenshotError"></div>
+               
+                <button type="button" class="cta-button" onclick="submitInvestForm()">Submit</button>
+            </form>
+        </div>
+
+        <div id="borrow" class="page">
+            <video autoplay loop muted playsinline>
+                <source src="C:\Users\gutti\Downloads\WhatsApp Video 2024-10-21 at 8.24.15 PM.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <h2>Get a Medical Loan</h2>
+            <p>Access the funds you need for your medical expenses quickly and easily.</p>
+            <div class="feature-box">
+                <h3>Loan Options:</h3>
+                <ul>
+                    <li>Borrow ₹10 lakhs, repay in 8 months</li>
+                    <li>Borrow ₹5 lakhs, repay in 6 months</li>
+                    <li>Borrow ₹2 lakhs, repay in 4 months</li>
+                </ul>
+            </div>
+            <button class="cta-button" onclick="showBorrowForm()">Apply Now</button>
+            <form id="borrowForm" style="display:none;">
+                <label for="borrowName">Full Name:</label>
+                <input type="text" id="borrowName" required>
+                <div class="error" id="borrowNameError"></div>
+               
+                <label for="borrowEmail">Email:</label>
+                <input type="email" id="borrowEmail" required>
+                <div class="error" id="borrowEmailError"></div>
+               
+                <label for="borrowPhone">Phone Number:</label>
+                <input type="tel" id="borrowPhone" required>
+                <div class="error" id="borrowPhoneError"></div>
+
+                <label for="borrowDOB">Date of Birth:</label>
+                <input type="date" id="borrowDOB" required>
+                <div class="error" id="borrowDOBError"></div>
+
+                <label for="borrowAddress">Current Address:</label>
+                <textarea id="borrowAddress" rows="3" required></textarea>
+                <div class="error" id="borrowAddressError"></div>
+               
+                <label for="loanAmount">Loan Amount:</label>
+                <select id="loanAmount" required>
+                    <option value="">Select loan amount</option>
+                    <option value="200000">₹2 lakhs (4 months)</option>
+                    <option value="500000">₹5 lakhs (6 months)</option>
+                    <option value="1000000">₹10 lakhs (8 months)</option>
+                </select>
+                <div class="error" id="loanAmountError"></div>
+               
+                <label for="Hospital">Select Hospital:</label>
+                <select id="Hospital" required>
+                    <option value="">Select Hospital</option>
+                    <option value="kamineni">Kamineni Hospital</option>
+                    <option value="capital">Capital Hospital</option>
+                    <option value="time">Time Hospital</option>
+                </select>
+                <div class="error" id="HospitalError"></div>
+
+                <label for="aadharCard">Upload Aadhar Card:</label>
+                <input type="file" id="aadharCard" accept=".pdf,.jpg,.jpeg,.png" required>
+                <div class="error" id="aadharCardError"></div>
+               
+                <label for="panCard">Upload PAN Card:</label>
+                <input type="file" id="panCard" accept=".pdf,.jpg,.jpeg,.png" required>
+                <div class="error" id="panCardError"></div>
+               
+                <label for="medicalCertificate">Upload Medical Certificate:</label>
+                <input type="file" id="medicalCertificate" accept=".pdf,.jpg,.jpeg,.png" required>
+                <div class="error" id="medicalCertificateError"></div>
+               
+                <button type="button" class="cta-button" onclick="submitBorrowForm()">Submit</button>
+            </form>
+        </div>
+
+        <div id="aboutUs" class="page">
+            <h2>About MediLoan</h2>
+            <div class="feature-box">
+                <p>MediLoan is a pioneering platform that connects investors with individuals in need of medical financial assistance. Our mission is to make healthcare accessible to everyone by providing quick and affordable medical loans.</p>
+                <p>Founded in 2020, we've helped thousands of patients receive timely medical care and enabled investors to make socially impactful investments.</p>
+            </div>
+            <h3>Our Team</h3>
+            <div class="features">
+                <div class="team-member">
+                    <img src="https://img.freepik.com/free-photo/digital-art-moon-tree-wallpaper_23-2150918811.jpg" alt="Ramarao">
+                    <h3>Ramarao</h3>
+                    <p>CEO & Co-founder</p>
+                    <p>Phone number : 9856493745</p>
+                </div>
+                <div class="team-member">
+                    <img src="C:\Users\gutti\Downloads\IMG_20241014_185000.jpg" alt="Chakri">
+                    <h3>Chakri</h3>
+                    <p>CTO & Co-founder</p>
+                    <p>Phone number : 9856493728</p>
+                </div>
+                <div class="team-member">
+                    <img src="https://i0.wp.com/picjumbo.com/wp-content/uploads/beautiful-nature-scenery-smartphone-wallpaper-free-photo.jpg?w=2210&quality=70" alt="Prasad">
+                    <h3>Prasad</h3>
+                    <p>Head of Operations</p>
+                    <p>Phone number : 9765945638</p>
+                </div>
+                <div class="team-member">
+                    <img src="https://w0.peakpx.com/wallpaper/123/54/HD-wallpaper-scenery-lake-nature-sky-tree-water.jpg" alt="Sahith">
+                    <h3>Sahith</h3>
+                    <p>Customer Relations Manager</p>
+                    <p>Phone number : 9756340826</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="successMessage"></div>
+
+    <script>
+        function showPage(pageId) {
+            const pages = document.getElementsByClassName('page');
+            for (let page of pages) {
+                page.style.display = 'none';
+            }
+            document.getElementById(pageId).style.display = 'block';
+        }
+
+        function showInvestForm() {
+            document.getElementById('investForm').style.display = 'block';
+        }
+
+        function showBorrowForm() {
+            document.getElementById('borrowForm').style.display = 'block';
+        }
+
+        function validateForm(formId) {
+            const form = document.getElementById(formId);
+            const inputs = form.getElementsByTagName('input');
+            const selects = form.getElementsByTagName('select');
+            let isValid = true;
+
+            for (let input of inputs) {
+                if (input.required && !input.value) {
+                    document.getElementById(input.id + 'Error').textContent = 'This field is required.';
+                    isValid = false;
+                } else {
+                    document.getElementById(input.id + 'Error').textContent = '';
+                }
+            }
+
+            for (let select of selects) {
+                if (select.required && !select.value) {
+                    document.getElementById(select.id + 'Error').textContent = 'Please select an option.';
+                    isValid = false;
+                } else {
+                    document.getElementById(select.id + 'Error').textContent = '';
+                }
+            }
+
+            return isValid;
+        }
+
+        function submitInvestForm() {
+            if (validateForm('investForm')) {
+                const successMessage = document.getElementById('successMessage');
+                successMessage.textContent = 'Investment application submitted successfully!';
+                successMessage.style.display = 'block';
+                document.getElementById('investForm').reset();
+                document.getElementById('investForm').style.display = 'none';
+            }
+        }
+
+        function submitBorrowForm() {
+            if (validateForm('borrowForm')) {
+                const successMessage = document.getElementById('successMessage');
+                successMessage.textContent = 'Loan application submitted successfully!';
+                successMessage.style.display = 'block';
+                document.getElementById('borrowForm').reset();
+                document.getElementById('borrowForm').style.display = 'none';
+            }
+        }
+
+        function selectPaymentMethod(method) {
+            document.getElementById('paymentMethod').value = method;
+            document.getElementById('paymentMethodError').textContent = '';
+
+            const icons = document.getElementsByClassName('payment-icon');
+            for (let icon of icons) {
+                icon.style.color = '';
+            }
+            event.target.style.color = '#0056b3';
+
+            switch(method) {
+                case 'googlepay':
+                    window.open('https://pay.google.com', '_blank');
+                    break;
+                case 'phonepe':
+                    window.open('https://www.phonepe.com', '_blank');
+                    break;
+                case 'paytm':
+                    window.open('https://paytm.com', '_blank');
+                    break;
+            }
+        }
+
+        showPage('home');
+    </script>
+</body>
+</html>
